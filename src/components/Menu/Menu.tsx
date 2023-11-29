@@ -1,10 +1,26 @@
+import { useEffect, useState } from "react";
 import "./menu.css";
 
 const Menu = () => {
+  const [isMenu, setIsMenu] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsMenu(true);
+    }, 1000);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  const displayIs = {
+    transform: isMenu ? "translateY(0px)" : "",
+  };
+
   return (
     <div className="menu">
-      <div className="menu-title"></div>
-      <div className="menu-content">Vahe</div>
+      <div style={displayIs} className="menu-container">
+        <div className="menu-title">Checkers</div>
+        <button className="menu-start">Start</button>
+      </div>
     </div>
   );
 };
