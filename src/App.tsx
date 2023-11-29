@@ -1,14 +1,11 @@
+import { useState } from "react";
 import "./App.css";
 import Game from "./components/Game/Game";
-// import Menu from "./components/Menu/Menu";
+import Menu from "./components/Menu/Menu";
 
 function App() {
-  return (
-    <div className="app">
-      {/* <Menu /> */}
-      <Game />
-    </div>
-  );
+  const [isGame, setIsGame] = useState(false);
+  return <div className="app">{isGame ? <Game /> : <Menu setIsGame={setIsGame} />}</div>;
 }
 
 export default App;
