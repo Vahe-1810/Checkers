@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import "./menu.css";
+import { MenuProps } from "src/types/menu-types";
 
-const Menu = () => {
+const Menu = ({ setIsGame }: MenuProps) => {
   const [isMenu, setIsMenu] = useState(false);
 
   useEffect(() => {
@@ -19,7 +20,9 @@ const Menu = () => {
     <div className="menu">
       <div style={displayIs} className="menu-container">
         <div className="menu-title">Checkers</div>
-        <button className="menu-start">Start</button>
+        <button className="menu-start" onClick={() => setIsGame(true)}>
+          Start
+        </button>
       </div>
     </div>
   );
