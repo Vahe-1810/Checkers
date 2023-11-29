@@ -1,10 +1,12 @@
 import "./App.css";
-import Menu from "./components/Menu/Menu";
+import Game from "./components/Game/Game";
+// import Menu from "./components/Menu/Menu";
 
 function App() {
   return (
     <div className="app">
-      <Menu />
+      {/* <Menu /> */}
+      <Game />
     </div>
   );
 }
