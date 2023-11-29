@@ -1,0 +1,8 @@
+.menu {
+    height: 100%;
+    width: 100%;
+    background-image: url("../../assets/checkers-background.jpg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
