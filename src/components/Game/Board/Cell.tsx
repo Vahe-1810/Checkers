@@ -1,10 +1,23 @@
 import { ICell } from "types/interfaces";
 import Piece from "./Piece";
+import { useContext } from "react";
+import { MovesContext } from "./Board";
 
-const Cell = ({ color, piece }: ICell) => {
+const Cell = (cell: ICell) => {
+  const { color, piece, x, y, canMove } = cell;
+  const makeMove = useContext(MovesContext)!.makeMove;
+
+  const move = () => {
+    makeMove(cell);
+  };
+
   return (
-    <div className="cell" style={{ background: color === "BLACK" ? "#d18b47" : "#ffce9e" }}>
-      {piece && <Piece src={piece} />}
+    <div
+      className="cell"
+      style={{ background: canMove ? "green" : color === "BLACK" ? "#d18b47" : "#ffce9e" }}
+      onClick={move}
+    >
+      {piece && <Piece src={piece.src} x={x} y={y} color={piece.color} />}
     </div>
   );
 };

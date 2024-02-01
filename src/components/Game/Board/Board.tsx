@@ -1,16 +1,22 @@
 import { useBoard } from "hooks/useBoard";
-import "./board.css";
 import Cell from "./Cell";
+import "./board.css";
+import { createContext } from "react";
+import { BoardHookActions } from "types/interfaces";
+
+export const MovesContext = createContext<null | BoardHookActions>(null);
 
 const Board = () => {
-  const board = useBoard();
+  const { currentBoard, getMoves, makeMove } = useBoard();
 
   return (
-    <div className="board">
-      {board.map(({ color, x, y, piece }) => (
-        <Cell color={color} x={x} y={y} key={`${x}${y}`} piece={piece} />
-      ))}
-    </div>
+    <MovesContext.Provider value={{ getMoves, currentBoard, makeMove }}>
+      <div className="board">
+        {currentBoard.map(({ color, x, y, piece, canMove }) => (
+          <Cell color={color} x={x} y={y} key={`${x}${y}`} piece={piece} canMove={canMove} />
+        ))}
+      </div>
+    </MovesContext.Provider>
   );
 };
 
